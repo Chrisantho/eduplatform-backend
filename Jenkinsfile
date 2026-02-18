@@ -5,19 +5,19 @@ pipeline {
 
         stage('Verify Docker') {
             steps {
-                bat 'docker version'
+                sh 'docker version'
             }
         }
 
         stage('Build Jar') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t edu-backend:latest .'
+                sh 'docker build -t edu-backend:latest .'
             }
         }
     }
